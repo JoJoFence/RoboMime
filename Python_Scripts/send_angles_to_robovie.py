@@ -21,13 +21,14 @@ Necessary Hardware:
     - Microsoft Azure Kinect DK Camera (https://www.microsoft.com/en-us/d/azure-kinect-dk/8pp5vxmd9nhq)
 
 Usage:
-    python SendAnglesToRobovie (-a or --actual [ROBOT_IP_ADDRESS] [DELAY] : sends angle data to the actual Robovie robot 
-                                                                            and you replace [ROBOT_IP_ADDRESS] with the
-                                                                            Robovie's IP address and [DELAY] with the 
-                                                                            delay time between each send (in seconds).
+    python SendAnglesToRobovie (-a or --actual [ROBOT_IP_ADDRESS] : sends angle data to the actual Robovie robot 
+                                                                    and you replace [ROBOT_IP_ADDRESS] with the
+                                                                    Robovie's IP address.
+                                -d or --delay [DELAY] : set a delay time between each angle data send (in seconds).
+                                                        The default = 0.002 seconds.
                                 -s or --sim : sends angle data to the Robovie simulator
                                 -o or --output : prints the angle data as output
-                                -c or --camera : displays what the Kinect Azure camera is seeing in real time
+                                -c or --camera : displays what the Kinect Azure camera is seeing in real time.
                                 -h or --help : displays this information as a help message)
 """
 
@@ -38,7 +39,6 @@ import sys
 import argparse
 import keyboard
 import numpy as np
-import pykinect_azure as pykinect
 
 from kinect_joint_orientations import get_elbow_angles, get_shoulder_angles, get_head_angles, initialize_pykinect, get_closest_person
 from motion_visualizer_updater import MotionVisualizerUpdater
@@ -46,12 +46,18 @@ from robot_motion_updater import RobotMotionUpdater
 
 # Setup argparser
 parser = argparse.ArgumentParser()
-parser.add_argument("-a", "--actual", nargs=2, metavar=("[ROBOT_IP_ADDRESS]", "[DELAY]"),
-                    help="Send angle data to actual Robovie (usage: -a [ROBOT_IP_ADDRESS] [DELAY])", default=False)
+parser.add_argument("-a", "--actual", nargs=1, metavar=("[ROBOT_IP_ADDRESS]"),
+                    help="Send angle data to actual Robovie (usage: -a [ROBOT_IP_ADDRESS])", default=False)
+parser.add_argument("-d", "--delay", nargs=1, metavar=("[DELAY]"), 
+                    help="Set delay between each time angle data is sent (in seconds, default = 0.002 seconds)", default=False)
 parser.add_argument("-s", "--sim", help="Send angle data to simulated Robovie", default=False, action="store_true")
 parser.add_argument("-o", "--output", help="Print out angle data as output", default=False, action="store_true")
 parser.add_argument("-c", "--camera", help="Displays what the Kinect Azure camera sees", default=False, action="store_true")
 args = parser.parse_args(args=None if sys.argv[1:] else ['--help'])
+if args.delay:
+    delay = float(args.delay[0])
+else:
+    delay = 0.002
 
 
 def get_all_angles(body):
@@ -164,7 +170,7 @@ if __name__ == "__main__":
                                 shoulder_roll_l = angles["shoulder_roll_l"], shoulder_pitch_l = angles["shoulder_pitch_l"],
                                 shoulder_roll_r = angles["shoulder_roll_r"], shoulder_pitch_r = angles["shoulder_pitch_r"],   
                                 head_roll = angles["head_roll"], head_pitch = angles["head_pitch"], neck_yaw = angles["neck_yaw"], 
-                                duration=args.actual[1])
+                                duration=delay)
             if args.sim and sim_connection.isValid():
                 # Sending the joint angles to Robovie simulator
                 sim_connection.send(elbow_pitch_l = angles["elbow_pitch_l"], elbow_yaw_l = angles["elbow_yaw_l"], 
@@ -172,9 +178,11 @@ if __name__ == "__main__":
                                 shoulder_roll_l = angles["shoulder_roll_l"], shoulder_pitch_l = angles["shoulder_pitch_l"],
                                 shoulder_roll_r = angles["shoulder_roll_r"], shoulder_pitch_r = angles["shoulder_pitch_r"],   
                                 head_roll = angles["head_roll"], head_pitch = angles["head_pitch"], neck_yaw = angles["neck_yaw"])
+                time.sleep(delay)
             if args.output:
                 # Print out the joint angle dictionary
                 print(angles)
+                time.sleep(delay)
 
             # Draw the skeletons
             combined_image = body_frame.draw_body2d(combined_image, closest_body.id)
