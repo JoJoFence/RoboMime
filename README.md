@@ -3,7 +3,7 @@ A program to make a robot imitate the skeletal pose of a human operator using a 
 
 ## Prerequisites
 
-**Currently this program has only been tested on Windows, but should work on Linux as well. However, the Microsoft Azure Kinect SDKs are currently only supported on Windows and Linux.**
+**This program has only been tested on Windows, but should work on Linux as well. However, the Microsoft Azure Kinect SDKs are currently only supported on Windows and Linux environments.**
 
 ### Hardware
 - A PC running Windows or Linux
