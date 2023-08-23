@@ -64,8 +64,8 @@ A program to make a robot imitate the skeletal pose of a human operator using a 
       ``` 
 
 ### The simulator in action:
+https://github.com/JoJoFence/RoboMime/assets/26200490/c7f32dea-ce4d-45a6-80ee-9771c028395e
 
-https://github.com/JoJoFence/RoboMime/assets/26200490/35561fd7-031f-4916-ac87-831ad0d86789
 
 
 
@@ -90,6 +90,6 @@ https://github.com/JoJoFence/RoboMime/assets/26200490/35561fd7-031f-4916-ac87-83
 - **Mandatory:** Have fun!
 
 ### Testing on a Robovie robot:
+https://github.com/JoJoFence/RoboMime/assets/26200490/dda13322-4c6d-45fd-93b0-281fc5d2fb89
 
-https://github.com/JoJoFence/RoboMime/assets/26200490/9ec97350-de4e-4817-a63a-c4c0869cf56c
 
