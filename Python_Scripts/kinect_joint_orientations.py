@@ -1,5 +1,5 @@
 """
-Script Name: KinectJointOrientations.py
+Script Name: kinect_joint_orientations.py
 Author: Jonas Hansen
 Affiliation: Human-Robot Interaction Laboratory, Kyoto University
 Date: August 2, 2023
@@ -339,6 +339,15 @@ def print_joint_information(body, joint):
 
 
 def initialize_pykinect():
+    """
+    DESCRIPTION:
+        Initializes the Azure Kinect camera by setting its device configurations and booting up its body tracking program.
+    INPUTS:
+        (No inputs)
+    OUTPUTS:
+        device (object): the pykinect.start_device() object.
+        bodyTracker (object): the pykinect.start_body_tracker() object.
+    """
     # Initialize the library, if the library is not found, add the library path as argument
     pykinect.initialize_libraries(track_body=True)
 
@@ -358,6 +367,14 @@ def initialize_pykinect():
 
 
 def get_closest_person(body_frame):
+    """
+    DESCRIPTION:
+        Calculates the closest human body to the Azure Kinect camera (this is the body assumed to be the operator so all other bodies are ignored).
+    INPUTS:
+        body_frame (object): the pykinect.start_body_tracker().update() object.
+    OUTPUTS:
+        body (object): the body_frame.get_body() object of the closest body to the Azure Kinect camera.
+    """
     # For each body in the camera's view, 
     num_bodies = body_frame.get_num_bodies()
     body_dist_dict = {}
@@ -389,11 +406,13 @@ if __name__ == "__main__":
         
         # Get the color depth image from the capture
         ret_depth, depth_color_image = capture.get_colored_depth_image()
-        depth_color_image = cv2.cvtColor(depth_color_image, cv2.COLOR_BGR2GRAY)
 
         # Get the colored body segmentation
         ret_color, body_image_color = body_frame.get_segmentation_image()
-        body_image_color = cv2.cvtColor(body_image_color, cv2.COLOR_BGR2GRAY)
+
+        # Uncomment the following two lines to make the camera feed black and white:
+        # depth_color_image = cv2.cvtColor(depth_color_image, cv2.COLOR_BGR2GRAY)
+        # body_image_color = cv2.cvtColor(body_image_color, cv2.COLOR_BGR2GRAY)
 
         if not ret_depth or not ret_color:
             continue
@@ -411,7 +430,7 @@ if __name__ == "__main__":
         else:
             print("Hello? Anybody there? No bodies found...")
         
-                
+
         # Overlay body segmentation on depth image
         cv2.imshow('Depth image with skeleton', combined_image)
 

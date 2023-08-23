@@ -1,5 +1,5 @@
 """
-Script Name: SendAnglesToRobovie.py
+Script Name: send_angles_to_robovie.py
 Author: Jonas Hansen
 Affiliation: Human-Robot Interaction Laboratory, Kyoto University
 Date: August 2, 2023
@@ -21,15 +21,15 @@ Necessary Hardware:
     - Microsoft Azure Kinect DK Camera (https://www.microsoft.com/en-us/d/azure-kinect-dk/8pp5vxmd9nhq)
 
 Usage:
-    python SendAnglesToRobovie (-a or --actual [ROBOT_IP_ADDRESS] : sends angle data to the actual Robovie robot 
+    python send_angles_to_robovie.py (-a or --actual [ROBOT_IP_ADDRESS] : sends angle data to the actual Robovie robot 
                                                                     and you replace [ROBOT_IP_ADDRESS] with the
                                                                     Robovie's IP address.
-                                -d or --delay [DELAY] : set a delay time between each angle data send (in seconds).
+                                      -d or --delay [DELAY] : set a delay time between each angle data send (in seconds).
                                                         The default = 0.002 seconds.
-                                -s or --sim : sends angle data to the Robovie simulator
-                                -o or --output : prints the angle data as output
-                                -c or --camera : displays what the Kinect Azure camera is seeing in real time.
-                                -h or --help : displays this information as a help message)
+                                      -s or --sim : sends angle data to the Robovie simulator
+                                      -o or --output : prints the angle data as output
+                                      -c or --camera : displays what the Kinect Azure camera is seeing in real time.
+                                      -h or --help : displays this information as a help message)
 """
 
 # Importing the relevant packages
@@ -61,6 +61,16 @@ else:
 
 
 def get_all_angles(body):
+    """
+    DESCRIPTION:
+        Gets the joint angles of a tracked body's elbows, shoulders, and head/neck in the format needed to be sent to the Robovie robot and stores all these angles
+        in a dictionary.
+    INPUTS:
+        body (object): pykinect_azure's 'body' object, defined as body_frame.get_body().
+    OUTPUTS:
+        angle_dict (dictionary): a dictionary containing the tracked angle values (ex. if the pitch of the left elbow is 40°, then it will be stored in the following 
+        key:value format: 'elbow_pitch_l':40.0).
+    """
     # Left elbow angles
     left_elbow = get_elbow_angles(body, side="left")
     elbow_pitch_l = left_elbow[1]
@@ -126,11 +136,13 @@ if __name__ == "__main__":
 
         # Get the color depth image from the capture
         ret_depth, depth_color_image = capture.get_colored_depth_image()        
-        depth_color_image = cv2.cvtColor(depth_color_image, cv2.COLOR_BGR2GRAY)
 
         # Get the colored body segmentation
         ret_color, body_image_color = body_frame.get_segmentation_image()
-        body_image_color = cv2.cvtColor(body_image_color, cv2.COLOR_BGR2GRAY)
+
+        # Uncomment the following two lines to make the camera feed black and white:
+        # depth_color_image = cv2.cvtColor(depth_color_image, cv2.COLOR_BGR2GRAY)
+        # body_image_color = cv2.cvtColor(body_image_color, cv2.COLOR_BGR2GRAY)
 
         if not ret_depth or not ret_color:
             continue
