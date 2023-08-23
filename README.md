@@ -11,7 +11,24 @@ A program to make a robot imitate the skeletal pose of a human operator using a 
 - Optional: A Robovie robot! You can also just run the simulator, or can adjust the angle constraints in the scripts to use your own robot!
 
 ### Software
-#### Step 1: Python, Visual Studio, and Azure Kinect SDKs
+#### Step 1: Clone the RoboMime repository
+- Clone this repo by running:
+
+    ```git clone https://github.com/JoJoFence/RoboMime.git```
+
+#### Step 2: Python packages via pip
+- Next you will need to install some packages via pip. In the RoboMime repo you just cloned and run:
+  
+    ```pip install -r requirements.txt```
+  
+  - The following packages will be installed:
+    - pykinect_azure
+    - numpy
+    - OpenCV
+    - keyboard
+    - scipy
+   
+#### Step 3: Python, Visual Studio, and Azure Kinect SDKs
 - [Python 3.x](https://www.python.org/downloads/)
   - **Note:** Make sure the Python path is added to your PATH environment variable! 
 - [Visual Studio](https://visualstudio.microsoft.com/downloads/)
@@ -21,19 +38,7 @@ A program to make a robot imitate the skeletal pose of a human operator using a 
 - [Microsoft Azure Kinect Body Tracking SDK](https://learn.microsoft.com/en-us/azure/kinect-dk/body-sdk-download)
   - **Note:** Make sure the path ```C:\Program Files\Azure Kinect Body Tracking SDK\tools``` is added to your PATH environment variable.
 
-#### Step 2: Python packages via pip
-- Next you will need to install some packages via pip, which can be done by running:
-    ```pip install -r requirements.txt```
-  - The following packages will be installed:
-    - pykinect_azure
-    - numpy
-    - OpenCV
-    - keyboard
-    - scipy
 
-#### Step 3:
-- Finally, clone this repository by running:
-    ```git clone https://github.com/JoJoFence/RoboMime.git```
 
   
 ## Running the Simulator
@@ -45,10 +50,14 @@ https://github.com/JoJoFence/RoboMime/assets/26200490/35561fd7-031f-4916-ac87-83
 
 #### Step 2
 - With the MotionVisualizer simulator running, navigate to the ```Python_Scripts``` folder of the repo and execute the following command:
+
     ```python send_angles_to_robovie.py -s -c```
 
   - **Note:** The ```-s``` and ```-c``` options tell the Python script to send data to the simulator (```-s```) and to launch the Azure Kinect camera view (```-c```). To see all options, you can run the following:
-        ```python send_angles_to_robovie.py --help``` 
+
+      ```python send_angles_to_robovie.py --help``` 
+
+
 
 
 ## Running on the Robovie Robot
@@ -63,6 +72,7 @@ https://github.com/JoJoFence/RoboMime/assets/26200490/9ec97350-de4e-4817-a63a-c4
 
 #### Step 4
 - Run the following command:
+
     ```python send_angles_to_robovie.py -c -a [YOUR_ROBOT'S_IP_ADDRESS]```
   
   - **Note:** Be sure to replace ```[YOUR_ROBOT'S_IP_ADDRESS]``` with the IP address of your robot. The ```-c``` option launches the Azure Kinect camera view.
