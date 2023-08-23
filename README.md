@@ -55,7 +55,7 @@ A program to make a robot imitate the skeletal pose of a human operator using a 
 
       ```python send_angles_to_robovie.py --help``` 
 
-#### The simulator in action:
+### The simulator in action:
 https://github.com/JoJoFence/RoboMime/assets/26200490/35561fd7-031f-4916-ac87-831ad0d86789
 
 
@@ -78,6 +78,6 @@ https://github.com/JoJoFence/RoboMime/assets/26200490/35561fd7-031f-4916-ac87-83
 #### Step 4
 - **Mandatory:** Have fun!
 
-#### Testing on a Robovie robot:
+### Testing on a Robovie robot:
 https://github.com/JoJoFence/RoboMime/assets/26200490/9ec97350-de4e-4817-a63a-c4c0869cf56c
 
