@@ -66,16 +66,16 @@ https://github.com/JoJoFence/RoboMime/assets/26200490/35561fd7-031f-4916-ac87-83
 - Plug your Azure Kinect camera into your PC and into power, point the camera towards you, and boot up your robot.
 
 #### Step 2
-- Once your robot is turned on, connect your PC to its Wifi network.
+- Once your robot is turned on, connect your PC to the robot's Wifi network.
 
-#### Step 4
+#### Step 3
 - Run the following command:
 
     ```python send_angles_to_robovie.py -c -a [YOUR_ROBOT'S_IP_ADDRESS]```
   
   - **Note:** Be sure to replace ```[YOUR_ROBOT'S_IP_ADDRESS]``` with the IP address of your robot. The ```-c``` option launches the Azure Kinect camera view.
  
-#### Step 5
+#### Step 4
 - **Mandatory:** Have fun!
 
 #### Testing on a Robovie robot:
