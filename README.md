@@ -44,7 +44,7 @@ A program to make a robot imitate the skeletal pose of a human operator using a 
 ## Running the Simulator
 
 #### Step 1
-- Plug your Azure Kinect camera into your PC and into power, point the camera towards you, and boot up the simulator by going into the ```MotionVisualizer``` folder of the repo and double-clicking on the "MotionVisualizer" application.
+- Plug your Azure Kinect camera into your PC and into power, point the camera towards you, and boot up the simulator by going into the ```MotionVisualizer``` folder of the repo and double-clicking on the ```MotionVisualizer.exe``` application.
 
 #### Step 2
 - With the MotionVisualizer simulator running, navigate to the ```Python_Scripts``` folder of the repo and execute the following command:
