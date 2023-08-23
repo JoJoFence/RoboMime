@@ -17,7 +17,7 @@ A program to make a robot imitate the skeletal pose of a human operator using a 
     ```git clone https://github.com/JoJoFence/RoboMime.git```
 
 #### Step 2: Python packages via pip
-- Next you will need to install some packages via pip. In the RoboMime repo you just cloned and run:
+- Next you will need to install some packages via pip. In the RoboMime repo you just cloned, run:
   
     ```pip install -r requirements.txt```
   
@@ -32,18 +32,16 @@ A program to make a robot imitate the skeletal pose of a human operator using a 
 - [Python 3.x](https://www.python.org/downloads/)
   - **Note:** Make sure the Python path is added to your PATH environment variable! 
 - [Visual Studio](https://visualstudio.microsoft.com/downloads/)
-  - **Note:** Make sure the path ```C:\Users\[USERNAME]\AppData\Local\Programs\Microsoft VS Code\bin``` is added to your PATH environment variable!
+  - **Note:** Make sure the ```C:\Users\[USERNAME]\AppData\Local\Programs\Microsoft VS Code\bin``` path is added to your PATH environment variable!
 - [Microsoft Azure Kinect Sensor SDK](https://learn.microsoft.com/en-us/azure/kinect-dk/sensor-sdk-download)
-  - **Note:** Make sure the paths ```C:\Program Files\Azure Kinect SDK v1.4.1\sdk\windows-desktop\amd64\release\bin\depthengine_2_0.dll``` and ```C:\Program Files\Azure Kinect SDK v1.4.1\sdk\windows-desktop\amd64\release\bin\k4a.dll``` are added to you PATH environment variable!
+  - **Note:** Make sure the ```C:\Program Files\Azure Kinect SDK v1.4.1\sdk\windows-desktop\amd64\release\bin\depthengine_2_0.dll``` and ```C:\Program Files\Azure Kinect SDK v1.4.1\sdk\windows-desktop\amd64\release\bin\k4a.dll``` paths are added to you PATH environment variable!
 - [Microsoft Azure Kinect Body Tracking SDK](https://learn.microsoft.com/en-us/azure/kinect-dk/body-sdk-download)
-  - **Note:** Make sure the path ```C:\Program Files\Azure Kinect Body Tracking SDK\tools``` is added to your PATH environment variable.
+  - **Note:** Make sure the ```C:\Program Files\Azure Kinect Body Tracking SDK\tools``` path is added to your PATH environment variable.
 
 
 
   
 ## Running the Simulator
-
-https://github.com/JoJoFence/RoboMime/assets/26200490/35561fd7-031f-4916-ac87-831ad0d86789
 
 #### Step 1
 - Plug your Azure Kinect camera into your PC and into power, point the camera towards you, and boot up the simulator by going into the ```MotionVisualizer``` folder of the repo and double-clicking on the "MotionVisualizer" application.
@@ -57,12 +55,12 @@ https://github.com/JoJoFence/RoboMime/assets/26200490/35561fd7-031f-4916-ac87-83
 
       ```python send_angles_to_robovie.py --help``` 
 
+#### The simulator in action:
+https://github.com/JoJoFence/RoboMime/assets/26200490/35561fd7-031f-4916-ac87-831ad0d86789
 
 
 
 ## Running on the Robovie Robot
-
-https://github.com/JoJoFence/RoboMime/assets/26200490/9ec97350-de4e-4817-a63a-c4c0869cf56c
 
 #### Step 1
 - Plug your Azure Kinect camera into your PC and into power, point the camera towards you, and boot up your robot.
@@ -79,4 +77,7 @@ https://github.com/JoJoFence/RoboMime/assets/26200490/9ec97350-de4e-4817-a63a-c4
  
 #### Step 5
 - **Mandatory:** Have fun!
+
+#### Testing on a Robovie robot:
+https://github.com/JoJoFence/RoboMime/assets/26200490/9ec97350-de4e-4817-a63a-c4c0869cf56c
 
