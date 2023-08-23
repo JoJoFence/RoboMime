@@ -1,0 +1,5 @@
+pykinect_azure
+numpy
+opencv-python
+keyboard
+scipy
