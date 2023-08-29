@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<launch>
+    <arg name="capture_device" default="/dev/video0"/>
+    <arg name="pixel_format" default="yuyv"/>
+    <arg name="image_width" default="640"/>
+    <arg name="image_height" default="360"/>
+    <arg name="framerate" default="30"/>
+
+    <node name="usb_cam" pkg="usb_cam" type="usb_cam_node" output="screen" respawn="true">
+        <param name="video_device" type="string" value="$(arg capture_device)" />
+        <param name="pixel_format" type="string" value="$(arg pixel_format)" />
+        <param name="image_width" type="int" value="$(arg image_width)"/>
+        <param name="image_height" type="int" value="$(arg image_height)"/>
+        <param name="framerate" type="int" value="$(arg framerate)"/>
+    </node>
+</launch>

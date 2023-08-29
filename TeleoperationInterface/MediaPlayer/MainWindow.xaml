@@ -1,0 +1,66 @@
+﻿<Window x:Class="MediaPlayer.MainWindow"
+        x:ClassModifier="internal"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="MainWindow"
+        Height="600" MinHeight="300"
+        Width="800" MinWidth="400"
+        Loaded="Window_Loaded"
+        Closing="Window_Closing">
+    <Grid DataContext="{Binding RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type Window}}}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="160"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.ColumnSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <TextBox Grid.Column="0" Margin="0,4" Padding="2" Text="{Binding MediaFileName}" VerticalAlignment="Center"/>
+            <Button Grid.Column="1" Margin="0,4" Padding="8" Content="Open" Click="ClickOpenFile"/>
+        </Grid>
+        <Grid Grid.ColumnSpan="2" Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0" Padding="8" Content="⏯"/>
+            <ProgressBar Grid.Column="1" Orientation="Horizontal"/>
+        </Grid>
+        <Image Grid.Column="0" Grid.Row="2" DataContext="{Binding MediaController, Mode=OneWay}" Source="{Binding VideoSample,Mode=OneWay}" Stretch="Uniform" HorizontalAlignment="Center" VerticalAlignment="Center" RenderOptions.BitmapScalingMode="LowQuality"/>
+        <Grid Grid.Column="0" Grid.Row="2" DataContext="{Binding MediaConverter, Mode=OneWay}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Image Source="{Binding VideoSample,Mode=OneWay}" Stretch="Uniform" HorizontalAlignment="Center" VerticalAlignment="Center" RenderOptions.BitmapScalingMode="LowQuality"/>
+            <ProgressBar Grid.Row="1" Maximum="100" Minimum="0" Value="{Binding Progress,Mode=OneWay}"/>
+            <TextBlock Grid.Row="1" Text="{Binding Progress,Mode=OneWay,StringFormat={}{0:0.00}}" TextAlignment="Center"/>
+        </Grid>
+        <Grid Grid.Column="1" Grid.Row="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="160"/>
+                <RowDefinition Height="40"/>
+            </Grid.RowDefinitions>
+            <Canvas Name="uiSpaceCanvas" Grid.Row="0" Grid.RowSpan="2"/>
+            <Canvas Name="uiMoveCanvas" Grid.Row="1" SizeChanged="MoveAreaSizeChanged">
+                <Ellipse Name="uiMoveArea" Fill="CornflowerBlue" Stroke="Transparent" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Ellipse Name="uiMovePos" Fill="LightYellow" Stroke="Transparent"/>
+            </Canvas>
+            <Canvas Name="uiTurnCanvas" Grid.Row="2" SizeChanged="TurnAreaSizeChanged">
+                <Rectangle Name="uiTurnArea" Fill="CornflowerBlue" Stroke="Transparent" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Ellipse Name="uiTurnPos" Fill="LightYellow" Stroke="Transparent"/>
+            </Canvas>
+        </Grid>
+    </Grid>
+</Window>

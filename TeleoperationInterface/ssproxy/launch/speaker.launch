@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<launch>
+    <arg name="device"        default=""/>
+    <arg name="channels"      default="1"/>
+    <arg name="sample_rate"   default="16000"/>
+    <arg name="sample_format" default="S16LE"/>
+
+    <node name="audio_play_driver" pkg="audio_play" type="audio_play" output="screen">
+        <remap from="audio" to="operator_audio"/>
+        <param name="device" value="$(arg device)"/>
+        <param name="channels" value="$(arg channels)"/>
+        <param name="sample_rate" value="$(arg sample_rate)"/>
+        <param name="sample_format" value="$(arg sample_format)"/>
+        <param name="format" value="wave"/>
+    </node>
+</launch>

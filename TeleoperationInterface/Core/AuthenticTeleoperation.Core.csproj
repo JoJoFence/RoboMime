@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <BaseIntermediateOutputPath>$(SolutionDir)Build\Objects\$(MSBuildProjectName)</BaseIntermediateOutputPath>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{3712F556-E761-4D5C-A897-9C29E8FDD0BD}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AuthenticTeleoperation.Core</RootNamespace>
+    <AssemblyName>AuthenticTeleoperation.Core</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\Build\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\Build\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="NAudio, Version=1.10.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(SolutionDir)NAudio-1.10.0\NAudio.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="SS.HRIKU.Network">
+      <HintPath>$(SolutionDir)SSSoftworks\SS.HRIKU.Network.dll</HintPath>
+    </Reference>
+    <Reference Include="SSSoftworks">
+      <HintPath>$(SolutionDir)SSSoftworks\SSSoftworks.dll</HintPath>
+    </Reference>
+    <Reference Include="SSSoftworks.JSON">
+      <HintPath>$(SolutionDir)SSSoftworks\SSSoftworks.JSON.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Messages\audio_common_msgs\AudioDataStamped.cs" />
+    <Compile Include="Messages\geometry_msgs\PoseWithCovarianceStamped.cs" />
+    <Compile Include="Messages\geometry_msgs\TwistWithCovariance.cs" />
+    <Compile Include="Messages\geometry_msgs\Twist.cs" />
+    <Compile Include="Messages\geometry_msgs\PoseWithCovariance.cs" />
+    <Compile Include="Messages\geometry_msgs\Pose.cs" />
+    <Compile Include="Messages\geometry_msgs\Vector3.cs" />
+    <Compile Include="Messages\geometry_msgs\Quaternion.cs" />
+    <Compile Include="Messages\layer2\HTEntityList.cs" />
+    <Compile Include="Messages\layer2\HTEntity.cs" />
+    <Compile Include="Messages\MsgType.cs" />
+    <Compile Include="Messages\geometry_msgs\Point.cs" />
+    <Compile Include="Messages\MediaBufferPool.cs" />
+    <Compile Include="Messages\MediaBuffer.cs" />
+    <Compile Include="Messages\sensor_msgs\PointField.cs" />
+    <Compile Include="Messages\sensor_msgs\PointCloud2.cs" />
+    <Compile Include="Messages\std_msgs\Header.cs" />
+    <Compile Include="Messages\nav_msgs\Odometry.cs" />
+    <Compile Include="Messages\sensor_msgs\CompressedImage.cs" />
+    <Compile Include="Messages\audio_common_msgs\AudioInfo.cs" />
+    <Compile Include="Messages\audio_common_msgs\AudioData.cs" />
+    <Compile Include="Messages\Message.cs" />
+    <Compile Include="Messages\std_msgs\String.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Robots\Handlers\AudioCapture.cs" />
+    <Compile Include="Robots\Handlers\AudioPlayback.cs" />
+    <Compile Include="Robots\Handlers\RobotCmdVel.cs" />
+    <Compile Include="Robots\Connections\RosProxyConnection.cs" />
+    <Compile Include="Robots\Connections\RosProxyUdpConnection.cs" />
+    <Compile Include="Robots\Connections\RosProxyTcpConnection.cs" />
+    <Compile Include="Robots\Handlers\VelodynePoints.cs" />
+    <Compile Include="Robots\Robovie.cs" />
+    <Compile Include="Robots\Handlers\RobotOdometry.cs" />
+    <Compile Include="Robots\Handlers\HumanTracking.cs" />
+    <Compile Include="Robots\Handlers\RobotTracking.cs" />
+    <Compile Include="Robots\Handlers\VideoCapture.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>SET LIBNAME=NAudio-1.10.0
+XCOPY /Y /D /E "$(SolutionDir)%25LIBNAME%25\*" "$(TargetDir)"
+</PostBuildEvent>
+  </PropertyGroup>
+</Project>

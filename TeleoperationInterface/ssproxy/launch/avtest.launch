@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<launch>
+    <arg name="video_device" default="/dev/video0"/>
+    <arg name="video_format" default="yuyv"/>
+    <arg name="video_width" default="640"/>
+    <arg name="video_height" default="360"/>
+    <arg name="video_framerate" default="30"/>
+    <arg name="audio_capture_device" default=""/>
+    <arg name="audio_playback_device" default=""/>
+    <arg name="audio_channels" default="1"/>
+    <arg name="audio_sample_rate" default="16000"/>
+    <arg name="audio_sample_format" default="S16LE"/>
+
+
+    <include file="$(find ssproxy)/launch/camera.launch">
+        <arg name="capture_device" value="$(arg video_device)"/>
+        <arg name="pixel_format"   value="$(arg video_format)"/>
+        <arg name="image_width"    value="$(arg video_width)"/>
+        <arg name="image_height"   value="$(arg video_height)"/>
+        <arg name="framerate"      value="$(arg video_framerate)"/>
+    </include>
+    <node pkg="ssproxy" name="robotVideoCapture" type="VideoCapture.py" args="-c /usb_cam/image_raw/compressed" output="screen"/>
+
+    <include file="$(find ssproxy)/launch/microphone.launch">
+        <arg name="device"        value="$(arg audio_capture_device)"/>
+        <arg name="channels"      value="$(arg audio_channels)"/>
+        <arg name="sample_rate"   value="$(arg audio_sample_rate)"/>
+        <arg name="sample_format" value="$(arg audio_sample_format)"/>
+    </include>
+    <node pkg="ssproxy" name="robotAudioCapture" type="AudioCapture.py" args="-a /robot_audio -i /robot_audio_info" output="screen"/>
+
+    <node pkg="ssproxy" name="operatorAudioPlayback" type="AudioPlayback.py" args="-ar $(arg audio_sample_rate) -ac $(arg audio_channels) -ab 0.5" output="screen"/>
+
+    <node pkg="ssproxy" name="navRobotCmdVel" type="RobotCmdVel.py" args="" output="screen"/>
+
+    <node pkg="ssproxy" name="navRobotOdometry" type="RobotOdometry.py" args="" output="screen"/>
+
+    <node pkg="ssproxy" name="sensorRobotTracking" type="RobotTracking.py" args="" output="screen"/>
+
+    <node pkg="ssproxy" name="sensorHumanTracking" type="HumanTracking.py" args="" output="screen"/>
+
+    <node pkg="ssproxy" name="sensorVelodynePoints" type="VelodynePointCloud.py" args="" output="screen"/>
+
+</launch>
+

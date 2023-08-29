@@ -1,0 +1,108 @@
+{
+  "HostAddress": "10.229.40.127",
+  "HostPort": 9560,
+  "MaxForeHindSpeed": "0.7f",
+  "MaxFlankSpeed": "0.35f",
+  "MaxTurnSpeed": "1.0f",
+  "RobovieJoints": [
+    {
+      "MaxAngle": 150,
+      "MinAngle": -150,
+      "AngleOffset": 0,
+      "ConversionGainNumerator": 180,
+      "ConversionGainDenominator": 5,
+      "ConversionOffset": 0,
+      "DefaultPoseValue": 0
+    },
+    {
+      "MaxAngle": 10,
+      "MinAngle": -75,
+      "AngleOffset": 75,
+      "ConversionGainNumerator": 75,
+      "ConversionGainDenominator": 5,
+      "ConversionOffset": 0,
+      "DefaultPoseValue": -5
+    },
+    {
+      "MaxAngle": 45,
+      "MinAngle": -40,
+      "AngleOffset": 35,
+      "ConversionGainNumerator": 90,
+      "ConversionGainDenominator": 5,
+      "ConversionOffset": 0,
+      "DefaultPoseValue": 0
+    },
+    {
+      "MaxAngle": 145,
+      "MinAngle": 15,
+      "AngleOffset": 0,
+      "ConversionGainNumerator": 77,
+      "ConversionGainDenominator": 5,
+      "ConversionOffset": 90,
+      "DefaultPoseValue": -5
+    },
+    {
+      "MaxAngle": 150,
+      "MinAngle": -150,
+      "AngleOffset": 0,
+      "ConversionGainNumerator": 180,
+      "ConversionGainDenominator": 5,
+      "ConversionOffset": 0,
+      "DefaultPoseValue": 0
+    },
+    {
+      "MaxAngle": 10,
+      "MinAngle": -75,
+      "AngleOffset": -75,
+      "ConversionGainNumerator": 75,
+      "ConversionGainDenominator": 5,
+      "ConversionOffset": 0,
+      "DefaultPoseValue": -5
+    },
+    {
+      "MaxAngle": 45,
+      "MinAngle": -40,
+      "AngleOffset": -35,
+      "ConversionGainNumerator": 90,
+      "ConversionGainDenominator": 5,
+      "ConversionOffset": 0,
+      "DefaultPoseValue": 0
+    },
+    {
+      "MaxAngle": 145,
+      "MinAngle": 15,
+      "AngleOffset": 0,
+      "ConversionGainNumerator": 77,
+      "ConversionGainDenominator": 5,
+      "ConversionOffset": 90,
+      "DefaultPoseValue": -5
+    },
+    {
+      "MaxAngle": 90,
+      "MinAngle": -90,
+      "AngleOffset": 0,
+      "ConversionGainNumerator": 90,
+      "ConversionGainDenominator": 5,
+      "ConversionOffset": 0,
+      "DefaultPoseValue": 0
+    },
+    {
+      "MaxAngle": 40,
+      "MinAngle": -50,
+      "AngleOffset": 0,
+      "ConversionGainNumerator": 40,
+      "ConversionGainDenominator": 5,
+      "ConversionOffset": 0,
+      "DefaultPoseValue": 0
+    },
+    {
+      "MaxAngle": 40,
+      "MinAngle": -40,
+      "AngleOffset": 0,
+      "ConversionGainNumerator": 80,
+      "ConversionGainDenominator": 5,
+      "ConversionOffset": 0,
+      "DefaultPoseValue": 0
+    }
+  ]
+}
