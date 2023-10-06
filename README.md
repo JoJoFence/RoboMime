@@ -1,6 +1,8 @@
 # RoboMime
 A program to make a robot imitate the skeletal pose of a human operator using a Microsoft Azure Kinect depth camera and Robovie robot.
 
+https://github.com/JoJoFence/RoboMime/assets/26200490/dda13322-4c6d-45fd-93b0-281fc5d2fb89
+
 ## Prerequisites
 
 **This program has only been tested on Windows, but should work on Linux as well. The Microsoft Azure Kinect SDKs are currently only supported on Windows and Linux environments.**
@@ -88,8 +90,3 @@ https://github.com/JoJoFence/RoboMime/assets/26200490/c7f32dea-ce4d-45a6-80ee-97
  
 #### Step 4
 - **Mandatory:** Have fun!
-
-### Testing on a Robovie robot:
-https://github.com/JoJoFence/RoboMime/assets/26200490/dda13322-4c6d-45fd-93b0-281fc5d2fb89
-
-
